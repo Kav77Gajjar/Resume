@@ -1,34 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ResumeHub - Resume Template Platform
+
+A clean and minimal Next.js frontend application for browsing and selecting resume templates. Built with a user-friendly interface to help job seekers find the perfect resume template.
+
+## Features
+
+- 🎨 **Clean & Minimal UI** - Modern design with focus on usability
+- 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- 🔍 **Search & Filter** - Find templates by category and search terms
+- 👀 **Template Preview** - Detailed view of each template with features
+- 🎯 **Featured Templates** - Highlighted popular and recommended templates
+- ⚡ **Fast Performance** - Built with Next.js 15 and Turbopack
+- 🎭 **Accessibility** - WCAG compliant with proper ARIA labels
+
+## Template Categories
+
+- **Professional** - Clean designs for business professionals
+- **Creative** - Bold layouts for creative industries
+- **Executive** - Elegant formats for senior positions
+- **Tech** - Minimalist designs for technical roles
+- **Academic** - Formal layouts for educational positions
+- **Sales** - Results-focused designs for sales professionals
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Linting**: ESLint
+- **Build Tool**: Turbopack
 
 ## Getting Started
 
-First, run the development server:
-
+1. **Install dependencies**:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Run the development server**:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. **Open your browser** and navigate to [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── template/[id]/     # Dynamic template detail pages
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+└── components/            # Reusable components
+    ├── Header.tsx         # Navigation header
+    ├── SearchBar.tsx      # Search and filter component
+    ├── TemplateCard.tsx   # Template display card
+    └── Footer.tsx         # Site footer
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-## Deploy on Vercel
+## Features Implementation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Template Cards
+Each template card includes:
+- Preview thumbnail
+- Template name and category
+- Description
+- Featured badge (if applicable)
+- "Use Template" and "Preview" buttons
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Search & Filter
+- Text search across template names and descriptions
+- Category-based filtering
+- Clean, accessible form inputs
+
+### Responsive Design
+- Mobile-first approach
+- Responsive grid layouts
+- Touch-friendly interface
+- Optimized for all screen sizes
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Deployment
+
+The application can be easily deployed to:
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **AWS Amplify**
+- **Any hosting service supporting Node.js**
+
+For Vercel deployment:
+```bash
+npx vercel
+```
+
+## Future Enhancements
+
+- [ ] Template preview modal
+- [ ] User accounts and favorites
+- [ ] Template customization interface
+- [ ] PDF export functionality
+- [ ] Template rating system
+- [ ] Advanced filtering options
+- [ ] Template search by industry
