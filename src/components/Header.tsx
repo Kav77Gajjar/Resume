@@ -27,12 +27,8 @@ export function Header() {
   };
 
   const handleAddTemplate = () => {
-    if (isLoggedIn) {
-      router.push('/add-template');
-    } else {
-      // Redirect to auth page with a return URL parameter
-      router.push('/auth?returnTo=/add-template');
-    }
+    // Redirect to admin add-template page
+    router.push('/admin/add-template');
   };
 
   return (
@@ -56,6 +52,9 @@ export function Header() {
               <a href="#" className="text-gray-700 hover:text-gray-900 transition-colors">
                 Tips
               </a>
+              <Link href="/admin" className="text-gray-700 hover:text-blue-600 transition-colors">
+                Admin
+              </Link>
             </nav>
 
             {/* CTA Buttons Container */}
@@ -120,6 +119,9 @@ export function Header() {
                 <a href="#" className="text-gray-700 hover:text-gray-900">
                   Pricing
                 </a>
+                <Link href="/admin" className="text-gray-700 hover:text-blue-600 transition-colors">
+                  Admin
+                </Link>
                 <div className="flex border border-gray-200 rounded-lg overflow-hidden w-full">
                   <button
                     onClick={handleAddTemplate}
