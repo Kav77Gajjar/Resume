@@ -8,8 +8,7 @@ interface TemplateData {
   name: string;
   description: string;
   category: string;
-  htmlCode: string;
-  cssCode: string;
+  code: string;
   featured: boolean;
   tags: string;
 }
@@ -22,192 +21,194 @@ export default function TemplatePreviewPage({ params }: { params: { id: string }
   useEffect(() => {
     // In a real app, you would fetch the template data from your API
     // For now, we'll use mock data
-    const mockTemplate: TemplateData = {
+  const mockTemplate: TemplateData = {
       id: parseInt(params.id),
       name: "Modern Professional",
       description: "Clean and contemporary design perfect for business professionals",
       category: "Professional",
       featured: true,
       tags: "modern, clean, professional",
-      htmlCode: `<!DOCTYPE html>
+    code: `<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - John Doe</title>
-</head>
-<body>
-    <div class="resume-container">
-        <header class="resume-header">
-            <h1>John Doe</h1>
-            <h2>Software Engineer</h2>
-            <div class="contact-info">
-                <p>Email: john.doe@email.com</p>
-                <p>Phone: (555) 123-4567</p>
-                <p>Location: New York, NY</p>
-            </div>
-        </header>
-        
-        <section class="resume-section">
-            <h3>Experience</h3>
-            <div class="job">
-                <h4>Senior Software Engineer</h4>
-                <p class="company">Tech Company Inc.</p>
-                <p class="duration">2020 - Present</p>
-                <ul>
-                    <li>Led development of web applications using React and Node.js</li>
-                    <li>Improved application performance by 40%</li>
-                    <li>Mentored junior developers</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section class="resume-section">
-            <h3>Education</h3>
-            <div class="education">
-                <h4>Bachelor of Science in Computer Science</h4>
-                <p class="school">University of Technology</p>
-                <p class="duration">2016 - 2020</p>
-            </div>
-        </section>
-        
-        <section class="resume-section">
-            <h3>Skills</h3>
-            <div class="skills">
-                <span class="skill">JavaScript</span>
-                <span class="skill">React</span>
-                <span class="skill">Node.js</span>
-                <span class="skill">Python</span>
-            </div>
-        </section>
-    </div>
-</body>
-</html>`,
-      cssCode: `body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume - John Doe</title>
+  <style>
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 
 .resume-container {
-    background: white;
-    padding: 40px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    border-radius: 8px;
+  background: white;
+  padding: 40px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 .resume-header {
-    text-align: center;
-    border-bottom: 3px solid #007bff;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+  text-align: center;
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .resume-header h1 {
-    font-size: 2.5em;
-    margin: 0;
-    color: #007bff;
+  font-size: 2.5em;
+  margin: 0;
+  color: #007bff;
 }
 
 .resume-header h2 {
-    font-size: 1.5em;
-    margin: 10px 0;
-    color: #666;
-    font-weight: normal;
+  font-size: 1.5em;
+  margin: 10px 0;
+  color: #666;
+  font-weight: normal;
 }
 
 .contact-info {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
 }
 
 .contact-info p {
-    margin: 0;
-    font-size: 0.9em;
-    color: #666;
+  margin: 0;
+  font-size: 0.9em;
+  color: #666;
 }
 
 .resume-section {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .resume-section h3 {
-    font-size: 1.3em;
-    color: #007bff;
-    border-bottom: 2px solid #e9ecef;
-    padding-bottom: 5px;
-    margin-bottom: 15px;
+  font-size: 1.3em;
+  color: #007bff;
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .job, .education {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .job h4, .education h4 {
-    font-size: 1.1em;
-    margin: 0 0 5px 0;
-    color: #333;
+  font-size: 1.1em;
+  margin: 0 0 5px 0;
+  color: #333;
 }
 
 .company, .school {
-    font-weight: bold;
-    color: #007bff;
-    margin: 0;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
 }
 
 .duration {
-    font-style: italic;
-    color: #666;
-    margin: 0 0 10px 0;
-    font-size: 0.9em;
+  font-style: italic;
+  color: #666;
+  margin: 0 0 10px 0;
+  font-size: 0.9em;
 }
 
 .job ul {
-    margin: 10px 0 0 20px;
-    padding: 0;
+  margin: 10px 0 0 20px;
+  padding: 0;
 }
 
 .job li {
-    margin-bottom: 5px;
-    color: #555;
+  margin-bottom: 5px;
+  color: #555;
 }
 
 .skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .skill {
-    background: #007bff;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.9em;
-    font-weight: 500;
+  background: #007bff;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 0.9em;
+  font-weight: 500;
 }
 
 @media (max-width: 600px) {
-    .resume-container {
-        padding: 20px;
-    }
+  .resume-container {
+    padding: 20px;
+  }
     
-    .contact-info {
-        flex-direction: column;
-        gap: 5px;
-    }
+  .contact-info {
+    flex-direction: column;
+    gap: 5px;
+  }
     
-    .resume-header h1 {
-        font-size: 2em;
-    }
-}`
+  .resume-header h1 {
+    font-size: 2em;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="resume-container">
+    <header class="resume-header">
+      <h1>John Doe</h1>
+      <h2>Software Engineer</h2>
+      <div class="contact-info">
+        <p>Email: john.doe@email.com</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Location: New York, NY</p>
+      </div>
+    </header>
+        
+    <section class="resume-section">
+      <h3>Experience</h3>
+      <div class="job">
+        <h4>Senior Software Engineer</h4>
+        <p class="company">Tech Company Inc.</p>
+        <p class="duration">2020 - Present</p>
+        <ul>
+          <li>Led development of web applications using React and Node.js</li>
+          <li>Improved application performance by 40%</li>
+          <li>Mentored junior developers</li>
+        </ul>
+      </div>
+    </section>
+        
+    <section class="resume-section">
+      <h3>Education</h3>
+      <div class="education">
+        <h4>Bachelor of Science in Computer Science</h4>
+        <p class="school">University of Technology</p>
+        <p class="duration">2016 - 2020</p>
+      </div>
+    </section>
+        
+    <section class="resume-section">
+      <h3>Skills</h3>
+      <div class="skills">
+        <span class="skill">JavaScript</span>
+        <span class="skill">React</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Python</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>`
     };
 
     setTemplate(mockTemplate);
@@ -299,17 +300,7 @@ export default function TemplatePreviewPage({ params }: { params: { id: string }
             <h3 className="text-lg font-medium text-gray-900 mb-4">Live Preview</h3>
             <div className="border border-gray-300 rounded-md h-96 overflow-auto">
               <iframe
-                srcDoc={`
-                  <!DOCTYPE html>
-                  <html>
-                    <head>
-                      <style>${template.cssCode}</style>
-                    </head>
-                    <body>
-                      ${template.htmlCode.replace(/<!DOCTYPE html>.*?<body[^>]*>/s, '').replace(/<\/body>.*?<\/html>/s, '')}
-                    </body>
-                  </html>
-                `}
+                srcDoc={template.code}
                 className="w-full h-full"
                 title="Template Preview"
               />
@@ -321,20 +312,10 @@ export default function TemplatePreviewPage({ params }: { params: { id: string }
         <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* HTML Code */}
           <div className="bg-white shadow rounded-lg p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">HTML Code</h3>
+            <h3 className="text-lg font-medium text-gray-900 mb-4">Code</h3>
             <div className="bg-gray-100 rounded-md p-4 overflow-auto max-h-96">
               <pre className="text-sm text-gray-800 whitespace-pre-wrap">
-                <code>{template.htmlCode}</code>
-              </pre>
-            </div>
-          </div>
-
-          {/* CSS Code */}
-          <div className="bg-white shadow rounded-lg p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">CSS Code</h3>
-            <div className="bg-gray-100 rounded-md p-4 overflow-auto max-h-96">
-              <pre className="text-sm text-gray-800 whitespace-pre-wrap">
-                <code>{template.cssCode}</code>
+                <code>{template.code}</code>
               </pre>
             </div>
           </div>

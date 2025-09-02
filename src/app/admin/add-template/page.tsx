@@ -10,9 +10,10 @@ export default function AddTemplatePage() {
     description: '',
     category: '',
     image: '',
-    featured: false,
-    htmlCode: '',
-    cssCode: '',
+  featured: false,
+  isNew: false,
+  popular: false,
+  code: '',
     tags: '',
     previewImage: '',
     difficulty: 'Beginner',
@@ -166,7 +167,7 @@ export default function AddTemplatePage() {
                   />
                 </div>
 
-                <div>
+                <div className="space-y-2">
                   <label htmlFor="featured" className="flex items-center">
                     <input
                       type="checkbox"
@@ -177,6 +178,30 @@ export default function AddTemplatePage() {
                       className="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700">Featured Template</span>
+                  </label>
+
+                  <label htmlFor="isNew" className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="isNew"
+                      id="isNew"
+                      checked={formData.isNew}
+                      onChange={handleInputChange}
+                      className="rounded border-gray-300 text-green-600 shadow-sm focus:border-green-300 focus:ring focus:ring-green-200 focus:ring-opacity-50"
+                    />
+                    <span className="ml-2 text-sm font-medium text-gray-700">New</span>
+                  </label>
+
+                  <label htmlFor="popular" className="flex items-center">
+                    <input
+                      type="checkbox"
+                      name="popular"
+                      id="popular"
+                      checked={formData.popular}
+                      onChange={handleInputChange}
+                      className="rounded border-gray-300 text-yellow-600 shadow-sm focus:border-yellow-300 focus:ring focus:ring-yellow-200 focus:ring-opacity-50"
+                    />
+                    <span className="ml-2 text-sm font-medium text-gray-700">Popular</span>
                   </label>
                 </div>
               </div>
@@ -235,34 +260,18 @@ export default function AddTemplatePage() {
                 <h3 className="text-lg font-medium text-gray-900">Template Code</h3>
                 
                 <div>
-                  <label htmlFor="htmlCode" className="block text-sm font-medium text-gray-700">
-                    HTML Code *
+                  <label htmlFor="code" className="block text-sm font-medium text-gray-700">
+                    Code *
                   </label>
                   <textarea
-                    name="htmlCode"
-                    id="htmlCode"
+                    name="code"
+                    id="code"
                     required
-                    rows={12}
-                    value={formData.htmlCode}
+                    rows={18}
+                    value={formData.code}
                     onChange={handleInputChange}
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm px-3 py-2 border font-mono text-sm"
-                    placeholder="Enter the HTML structure for the resume template..."
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="cssCode" className="block text-sm font-medium text-gray-700">
-                    CSS Code *
-                  </label>
-                  <textarea
-                    name="cssCode"
-                    id="cssCode"
-                    required
-                    rows={12}
-                    value={formData.cssCode}
-                    onChange={handleInputChange}
-                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm px-3 py-2 border font-mono text-sm"
-                    placeholder="Enter the CSS styling for the resume template..."
+                    placeholder="Enter combined HTML/CSS/inline scripts for the template..."
                   />
                 </div>
               </div>
