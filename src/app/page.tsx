@@ -2,6 +2,7 @@ import { TemplateCard } from '../components/TemplateCard';
 import { SearchBar } from '../components/SearchBar';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
+import { CardHoverEffectDemo } from '../components/CardHoverEffectDemo';
 
 const resumeTemplates = [
   {
@@ -115,11 +116,13 @@ export default function Home() {
       <section className="py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Templates</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 overflow-visible">
             {resumeTemplates
               .filter(template => template.featured)
               .map((template) => (
-                <TemplateCard key={template.id} template={template} />
+                <div key={template.id} className="w-full flex justify-center">
+                  <TemplateCard template={template} />
+                </div>
               ))}
           </div>
         </div>
@@ -129,11 +132,21 @@ export default function Home() {
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">All Templates</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 overflow-visible">
             {resumeTemplates.map((template) => (
-              <TemplateCard key={template.id} template={template} />
+                <div key={template.id} className="w-full flex justify-center">
+                  <TemplateCard template={template} />
+                </div>
             ))}
           </div>
+        </div>
+      </section>
+      
+      {/* Card Hover Effect Demo */}
+      <section className="py-12 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">Popular Resume Services</h2>
+          <CardHoverEffectDemo />
         </div>
       </section>
       

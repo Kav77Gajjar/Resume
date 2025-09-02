@@ -16,12 +16,23 @@ export function Header() {
   }, []);
 
   const handleLogin = () => {
-    router.push('/auth/login');
+    router.push('/auth');
   };
 
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('username');
     setIsLoggedIn(false);
+  };
+
+  const handleAddTemplate = () => {
+    if (isLoggedIn) {
+      router.push('/add-template');
+    } else {
+      // Redirect to auth page with a return URL parameter
+      router.push('/auth?returnTo=/add-template');
+    }
   };
 
   return (
@@ -50,31 +61,19 @@ export function Header() {
             {/* CTA Buttons Container */}
             <div className="hidden md:block">
               <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
-                <Link 
-                  href="/create-resume" 
+                <button 
+                  onClick={handleAddTemplate}
                   className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors text-center"
                 >
-                  Create Resume
-                </Link>
+                  Add Template
+                </button>
                 {isLoggedIn ? (
-                  <div className="relative group">
-                    <button className="bg-white text-gray-700 px-4 py-2 hover:bg-gray-50 transition-colors border-l border-gray-200 flex items-center">
-                      <span>Profile</span>
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </button>
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 z-10 hidden group-hover:block">
-                      <Link href="/profile" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Profile</Link>
-                      <Link href="/my-resumes" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Resumes</Link>
-                      <button 
-                        onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
-                      >
-                        Logout
-                      </button>
-                    </div>
-                  </div>
+                  <button
+                    className="bg-white text-gray-700 px-4 py-2 hover:bg-gray-50 transition-colors border-l border-gray-200"
+                    onClick={() => router.push('/profile')}
+                  >
+                    <span>Profile</span>
+                  </button>
                 ) : (
                   <button 
                     onClick={handleLogin}
@@ -122,12 +121,12 @@ export function Header() {
                   Pricing
                 </a>
                 <div className="flex border border-gray-200 rounded-lg overflow-hidden w-full">
-                  <Link
-                    href="/create-resume"
+                  <button
+                    onClick={handleAddTemplate}
                     className="bg-blue-600 text-white py-2 hover:bg-blue-700 transition-colors flex-1 text-center"
                   >
-                    Create Resume
-                  </Link>
+                    Add Template
+                  </button>
                   {isLoggedIn ? (
                     <Link
                       href="/profile"

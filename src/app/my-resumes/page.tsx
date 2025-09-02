@@ -35,7 +35,7 @@ export default function MyResumesPage() {
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (!isLoggedIn) {
-      router.push('/auth/login');
+      router.push('/auth');
     } else {
       setIsLoading(false);
     }

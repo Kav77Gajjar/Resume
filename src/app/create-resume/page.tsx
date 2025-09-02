@@ -18,7 +18,7 @@ export default function CreateResumePage() {
 
   const handleTemplateSelect = () => {
     if (!isLoggedIn) {
-      router.push('/auth/login');
+      router.push('/auth');
     } else {
       // In a real app, you would navigate to the resume editor with the selected template
       alert('Template selected! Redirecting to editor...');
@@ -44,98 +44,188 @@ export default function CreateResumePage() {
         </div>
         
         {/* Template Selection */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 overflow-visible">
           {/* Template 1 */}
-          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="h-64 bg-gray-100 flex items-center justify-center">
-              <div className="w-3/4 h-5/6 bg-white shadow-sm border border-gray-200 p-4">
-                <div className="h-1/4">
-                  <div className="h-4 w-2/3 bg-gray-300 rounded mb-2"></div>
-                  <div className="h-3 w-1/2 bg-gray-200 rounded"></div>
-                </div>
-                <div className="h-3/4 mt-4 flex">
-                  <div className="w-1/3 pr-2">
-                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                    <div className="h-3 w-full bg-gray-200 rounded"></div>
+          <div className="w-full flex justify-center">
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden group h-[570px] w-[120%]">
+              {/* Template Preview - 80% */}
+              <div className="h-[80%] bg-gray-100 flex items-center justify-center">
+                <div className="w-3/4 h-5/6 bg-white shadow-sm border border-gray-200 p-4">
+                  <div className="h-1/4">
+                    <div className="h-4 w-2/3 bg-gray-300 rounded mb-2"></div>
+                    <div className="h-3 w-1/2 bg-gray-200 rounded"></div>
                   </div>
-                  <div className="w-2/3 pl-2">
-                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                    <div className="h-3 w-full bg-gray-200 rounded"></div>
+                  <div className="h-3/4 mt-4 flex">
+                    <div className="w-1/3 pr-2">
+                      <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                      <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                      <div className="h-3 w-full bg-gray-200 rounded"></div>
+                    </div>
+                    <div className="w-2/3 pl-2">
+                      <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                      <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                      <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                      <div className="h-3 w-full bg-gray-200 rounded"></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900">Professional</h3>
-              <p className="mt-2 text-gray-600">Clean and minimal design for a professional look.</p>
-              <button 
-                onClick={handleTemplateSelect}
-                className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Use This Template
-              </button>
+              
+              {/* Template Label - 8% */}
+              <div className="h-[8%] bg-gray-50 flex items-center px-4 border-t border-gray-200">
+                <h3 className="font-medium text-gray-800 text-sm truncate">Minimal Resume</h3>
+                <span className="ml-2 text-xs text-gray-500">Professional</span>
+              </div>
+              
+              {/* Buttons - 12% */}
+              <div className="flex h-[12%]">
+                <button 
+                  onClick={handleTemplateSelect}
+                  className="flex-1 bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors text-sm font-medium"
+                >
+                  Use This Template
+                </button>
+                <Link href="/template/1">
+                  <button 
+                    className="w-16 bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+                    aria-label="Preview template"
+                  >
+                  <svg className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                </button>
+                </Link>
+              </div>
             </div>
           </div>
           
           {/* Template 2 */}
-          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="h-64 bg-gray-100 flex items-center justify-center">
-              <div className="w-3/4 h-5/6 bg-white shadow-sm border border-gray-200 p-4">
-                <div className="h-1/4 flex">
-                  <div className="w-1/4 bg-blue-100 mr-2"></div>
-                  <div className="w-3/4">
-                    <div className="h-4 w-2/3 bg-gray-300 rounded mb-2"></div>
-                    <div className="h-3 w-1/2 bg-gray-200 rounded"></div>
+          <div className="w-full flex justify-center">
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden group h-[570px] w-[120%]">
+              {/* Template Preview - 80% */}
+              <div className="h-[80%] bg-gray-100 flex items-center justify-center">
+                <div className="w-3/4 h-5/6 bg-white shadow-sm border border-gray-200 p-4">
+                  <div className="h-1/4 flex">
+                    <div className="w-1/4 bg-blue-100 mr-2"></div>
+                    <div className="w-3/4">
+                      <div className="h-4 w-2/3 bg-gray-300 rounded mb-2"></div>
+                      <div className="h-3 w-1/2 bg-gray-200 rounded"></div>
+                    </div>
+                  </div>
+                  <div className="h-3/4 mt-4">
+                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 w-full bg-gray-200 rounded"></div>
                   </div>
                 </div>
-                <div className="h-3/4 mt-4">
-                  <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                  <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                  <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                  <div className="h-3 w-full bg-gray-200 rounded"></div>
-                </div>
               </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900">Modern</h3>
-              <p className="mt-2 text-gray-600">Contemporary design with a clean layout and unique details.</p>
-              <button 
-                onClick={handleTemplateSelect}
-                className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Use This Template
-              </button>
+              
+              {/* Template Label - 8% */}
+              <div className="h-[8%] bg-gray-50 flex items-center px-4 border-t border-gray-200">
+                <h3 className="font-medium text-gray-800 text-sm truncate">Modern Split</h3>
+                <span className="ml-2 text-xs text-gray-500">Creative</span>
+              </div>
+              
+              {/* Buttons - 12% */}
+              <div className="flex h-[12%]">
+                <button 
+                  onClick={handleTemplateSelect}
+                  className="flex-1 bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors text-sm font-medium"
+                >
+                  Use This Template
+                </button>
+                <Link href="/template/2">
+                  <button 
+                    className="w-16 bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+                  aria-label="Preview template"
+                >
+                  <svg className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                </button>
+                </Link>
+              </div>
             </div>
           </div>
           
           {/* Template 3 */}
-          <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="h-64 bg-gray-100 flex items-center justify-center">
-              <div className="w-3/4 h-5/6 bg-white shadow-sm border border-gray-200 p-4">
-                <div className="h-1/4 flex flex-col items-center">
-                  <div className="h-8 w-8 bg-gray-300 rounded-full mb-2"></div>
-                  <div className="h-3 w-1/2 bg-gray-300 rounded mb-1"></div>
-                  <div className="h-2 w-1/3 bg-gray-200 rounded"></div>
-                </div>
-                <div className="h-3/4 mt-4">
-                  <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                  <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
-                  <div className="h-3 w-full bg-gray-200 rounded"></div>
+          <div className="w-full flex justify-center">
+            <div className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 overflow-hidden group h-[570px] w-[120%]">
+              {/* Template Preview - 80% */}
+              <div className="h-[80%] bg-gray-100 flex items-center justify-center">
+                <div className="w-3/4 h-5/6 bg-white shadow-sm border border-gray-200 p-4">
+                  <div className="h-1/4 flex flex-col items-center">
+                    <div className="h-8 w-8 bg-gray-300 rounded-full mb-2"></div>
+                    <div className="h-3 w-1/2 bg-gray-300 rounded mb-1"></div>
+                    <div className="h-2 w-1/3 bg-gray-200 rounded"></div>
+                  </div>
+                  <div className="h-3/4 mt-4">
+                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 w-full bg-gray-200 rounded mb-2"></div>
+                    <div className="h-3 w-full bg-gray-200 rounded"></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-semibold text-gray-900">Creative</h3>
-              <p className="mt-2 text-gray-600">Stand out with this creative design for innovative professionals.</p>
-              <button 
-                onClick={handleTemplateSelect}
-                className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                Use This Template
-              </button>
+              
+              {/* Template Label - 8% */}
+              <div className="h-[8%] bg-gray-50 flex items-center px-4 border-t border-gray-200">
+                <h3 className="font-medium text-gray-800 text-sm truncate">Centered Profile</h3>
+                <span className="ml-2 text-xs text-gray-500">Elegant</span>
+              </div>
+              
+              {/* Buttons - 12% */}
+              <div className="flex h-[12%]">
+                <button 
+                  onClick={handleTemplateSelect}
+                  className="flex-1 bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition-colors text-sm font-medium"
+                >
+                  Use This Template
+                </button>
+                <Link href="/template/3">
+                  <button 
+                    className="w-16 bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
+                    aria-label="Preview template"
+                  >
+                  <svg className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -145,18 +235,12 @@ export default function CreateResumePage() {
           <div className="mt-12 bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
             <h2 className="text-xl font-bold text-gray-900">Save and manage your resumes</h2>
             <p className="mt-2 text-gray-600">Sign in to save your progress, download, and manage multiple versions of your resume.</p>
-            <div className="mt-4 flex justify-center space-x-4">
+            <div className="mt-4 flex justify-center">
               <Link
-                href="/auth/login"
+                href="/auth"
                 className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
-                Login
-              </Link>
-              <Link
-                href="/auth/signup"
-                className="px-6 py-2 bg-white border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
-              >
-                Sign Up
+                Login / Sign Up
               </Link>
             </div>
           </div>
