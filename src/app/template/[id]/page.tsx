@@ -121,7 +121,7 @@ export default function TemplatePage() {
         <Header />
         <div className="max-w-4xl mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold text-gray-900">Template Not Found</h1>
-          <p className="mt-4 text-gray-600">The template you're looking for doesn't exist.</p>
+          <p className="mt-4 text-gray-600">The template you&apos;re looking for doesn&apos;t exist.</p>
           <button 
             onClick={() => router.push('/')}
             className="mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"

@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export function Header() {
-  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
@@ -15,20 +14,11 @@ export function Header() {
     setIsLoggedIn(loginStatus === 'true');
   }, []);
 
-  const handleLogin = () => {
-    router.push('/auth');
-  };
-
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('userEmail');
     localStorage.removeItem('username');
     setIsLoggedIn(false);
-  };
-
-  const handleAddTemplate = () => {
-    // Redirect to admin add-template page
-    router.push('/admin/add-template');
   };
 
   return (
@@ -56,29 +46,7 @@ export function Header() {
 
             {/* CTA Buttons Container */}
             <div className="hidden md:block">
-              <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
-                <button 
-                  onClick={handleAddTemplate}
-                  className="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 transition-colors text-center"
-                >
-                  Add Template
-                </button>
-                {isLoggedIn ? (
-                  <button
-                    className="bg-white text-gray-700 px-4 py-2 hover:bg-gray-50 transition-colors border-l border-gray-200"
-                    onClick={() => router.push('/profile')}
-                  >
-                    <span>Profile</span>
-                  </button>
-                ) : (
-                  <button 
-                    onClick={handleLogin}
-                    className="bg-white text-gray-700 px-4 py-2 hover:bg-gray-50 transition-colors border-l border-gray-200"
-                  >
-                    Login
-                  </button>
-                )}
-              </div>
+              {/* Buttons removed */}
             </div>
 
             {/* Mobile menu button */}
@@ -119,29 +87,7 @@ export function Header() {
                 <Link href="/admin" className="text-gray-700 hover:text-blue-600 transition-colors">
                   Admin
                 </Link>
-                <div className="flex border border-gray-200 rounded-lg overflow-hidden w-full">
-                  <button
-                    onClick={handleAddTemplate}
-                    className="bg-blue-600 text-white py-2 hover:bg-blue-700 transition-colors flex-1 text-center"
-                  >
-                    Add Template
-                  </button>
-                  {isLoggedIn ? (
-                    <Link
-                      href="/profile"
-                      className="bg-white text-gray-700 py-2 hover:bg-gray-50 transition-colors border-l border-gray-200 flex-1 text-center"
-                    >
-                      Profile
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={handleLogin}
-                      className="bg-white text-gray-700 py-2 hover:bg-gray-50 transition-colors border-l border-gray-200 flex-1"
-                    >
-                      Login
-                    </button>
-                  )}
-                </div>
+                {/* Mobile buttons removed */}
                 {isLoggedIn && (
                   <button
                     onClick={handleLogout}

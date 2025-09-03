@@ -214,7 +214,7 @@ export default function UserDetailsPage({ params }: { params: { id: string } }) 
           <div className="lg:col-span-2">
             <div className="bg-white shadow rounded-lg">
               <div className="px-6 py-4 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">User's Resumes ({user.totalResumes})</h3>
+                <h3 className="text-lg font-medium text-gray-900">User&apos;s Resumes ({user.totalResumes})</h3>
               </div>
               
               {user.resumes.length > 0 ? (
@@ -297,7 +297,7 @@ export default function UserDetailsPage({ params }: { params: { id: string } }) 
                   </svg>
                   <h3 className="mt-2 text-sm font-medium text-gray-900">No resumes found</h3>
                   <p className="mt-1 text-sm text-gray-500">
-                    This user hasn't created any resumes yet.
+                    This user hasn&apos;t created any resumes yet.
                   </p>
                 </div>
               )}

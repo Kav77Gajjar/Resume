@@ -64,7 +64,7 @@ export default function MyResumesPage() {
         
         {resumes.length === 0 ? (
           <div className="bg-white rounded-lg shadow p-6 text-center">
-            <p className="text-gray-600">You haven't created any resumes yet.</p>
+            <p className="text-gray-600">You haven&apos;t created any resumes yet.</p>
             <Link
               href="/create-resume"
               className="mt-4 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"

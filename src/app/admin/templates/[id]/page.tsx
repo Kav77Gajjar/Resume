@@ -244,7 +244,7 @@ body {
             <div>
               <h1 className="text-2xl font-bold text-gray-900">Template Preview</h1>
               <p className="mt-1 text-sm text-gray-600">
-                Preview of "{template.name}" template
+                Preview of &quot;{template.name}&quot; template
               </p>
             </div>
             <div className="flex space-x-3">
